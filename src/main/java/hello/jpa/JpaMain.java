@@ -40,8 +40,8 @@ public class JpaMain {
 //            insert(em);
 //            find(em);
 //            update(em);
-            directlyUseQuery(em);
-
+//            directlyUseQuery(em);
+            lookOverCache(em);
 
             tx.commit();
         } catch (Exception e) {
@@ -51,6 +51,19 @@ public class JpaMain {
         }
 
         emf.close();
+
+    }
+
+    private static void lookOverCache(EntityManager em) {
+        //비영속
+        Member member = new Member();
+        member.setId(101L);
+        member.setName("HelloJPA");
+
+        //영속
+        System.out.println("-----Before------");
+        em.persist(member);
+        System.out.println("-----After------");
 
     }
 
