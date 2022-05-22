@@ -41,7 +41,8 @@ public class JpaMain {
 //            find(em);
 //            update(em);
 //            directlyUseQuery(em);
-            lookOverCache(em);
+//            lookOverCache(em);
+            firstCache(em);
 
             tx.commit();
         } catch (Exception e) {
@@ -52,6 +53,11 @@ public class JpaMain {
 
         emf.close();
 
+    }
+
+    private static void firstCache(EntityManager em) {
+        Member findMember = em.find(Member.class, 101L);
+        Member findMember2 = em.find(Member.class, 101L);
     }
 
     private static void lookOverCache(EntityManager em) {
