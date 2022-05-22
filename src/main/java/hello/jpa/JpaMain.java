@@ -57,13 +57,18 @@ public class JpaMain {
     private static void lookOverCache(EntityManager em) {
         //비영속
         Member member = new Member();
-        member.setId(101L);
-        member.setName("HelloJPA");
+        member.setId(102L);
+        member.setName("HelloJPA2");
 
         //영속
         System.out.println("-----Before------");
         em.persist(member);
         System.out.println("-----After------");
+
+        Member findMember = em.find(Member.class, 102L);
+
+        System.out.println("findMember.getId() = " + findMember.getId());
+        System.out.println("findMember.getName() = " + findMember.getName());
 
     }
 
