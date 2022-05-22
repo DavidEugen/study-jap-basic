@@ -1,5 +1,6 @@
 package hello.jpa;
 
+import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
@@ -36,10 +37,11 @@ public class JpaMain {
 
         try {
             //code
-            Member member = new Member();
-            member.setId(2L);
-            member.setName("HelloB");
-            em.persist(member);
+//            insert(em);
+//            find(em);
+//            update(em);
+            directlyUseQuery(em);
+
 
             tx.commit();
         } catch (Exception e) {
@@ -50,6 +52,38 @@ public class JpaMain {
 
         emf.close();
 
+    }
+
+    private static void directlyUseQuery(EntityManager em) {
+        List<Member> resultList = em.createQuery("select m from Member as m", Member.class)
+                .setFirstResult(0) //paging 처음
+                .setMaxResults(3) //paging 마지막
+                .getResultList();//조회
+
+        for (Member member: resultList) {
+            System.out.println("member.id = " + member.getId());
+            System.out.println("member.name = " + member.getName());
+        }
+    }
+
+    private static void update(EntityManager em) {
+        Member findMember = em.find(Member.class, 1L);
+        findMember.setName("newName");
+
+        //em.persist(findMember);// 를 써야 할 것 같지만, JPA은 자바 컬렉션을 다루듯이 작업해 준다.
+    }
+
+    private static void find(EntityManager em) {
+        Member findMember = em.find(Member.class, 1L);
+        System.out.println("findMember.id = " + findMember.getId());
+        System.out.println("findMember.name = " + findMember.getName());
+    }
+
+    private static void insert(EntityManager em) {
+        Member member = new Member();
+        member.setId(2L);
+        member.setName("HelloB");
+        em.persist(member);
 
     }
 
