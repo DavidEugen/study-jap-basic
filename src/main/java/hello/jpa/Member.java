@@ -13,6 +13,14 @@ public class Member {
     //@Column(name ="name") // column명이 다를 경우 매핑 가능
     private String name;
 
+    public Member() {
+    }
+
+    public Member(Long id, String name) {
+        this.id = id;
+        this.name = name;
+    }
+
     public Long getId() {
         return id;
     }

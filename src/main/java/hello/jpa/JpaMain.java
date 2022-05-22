@@ -42,7 +42,8 @@ public class JpaMain {
 //            update(em);
 //            directlyUseQuery(em);
 //            lookOverCache(em);
-            firstCache(em);
+//            firstCache(em);
+            transactionalWriteBehind(em);
 
             tx.commit();
         } catch (Exception e) {
@@ -55,16 +56,29 @@ public class JpaMain {
 
     }
 
+    private static void transactionalWriteBehind(EntityManager em) {
+        Member memberA = new Member(111L, "A");
+        Member memberB = new Member(112L, "B");
+
+        em.persist(memberA);
+        em.persist(memberB);
+
+        System.out.println("=================");
+
+    }
+
     private static void firstCache(EntityManager em) {
         Member findMember = em.find(Member.class, 101L);
         Member findMember2 = em.find(Member.class, 101L);
+
+        System.out.println("result = " + (findMember == findMember2));
     }
 
     private static void lookOverCache(EntityManager em) {
         //비영속
         Member member = new Member();
-        member.setId(102L);
-        member.setName("HelloJPA2");
+//        member.setId(102L);
+//        member.setName("HelloJPA2");
 
         //영속
         System.out.println("-----Before------");
