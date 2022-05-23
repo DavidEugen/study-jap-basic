@@ -43,7 +43,8 @@ public class JpaMain {
 //            directlyUseQuery(em);
 //            lookOverCache(em);
 //            firstCache(em);
-            transactionalWriteBehind(em);
+//            transactionalWriteBehind(em);//쓰기 지연
+            dirtyChecking(em);//변경 감지
 
             tx.commit();
         } catch (Exception e) {
@@ -54,6 +55,16 @@ public class JpaMain {
 
         emf.close();
 
+    }
+
+    private static void dirtyChecking(EntityManager em) {
+        Member member = em.find(Member.class, 112L);
+        member.setName("changeB");
+
+        //em.persist(member); // 요론것들이 있어야 할 것 같은데...
+        //em.update(member); //
+
+        System.out.println("============");
     }
 
     private static void transactionalWriteBehind(EntityManager em) {
