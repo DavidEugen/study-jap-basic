@@ -1,4 +1,4 @@
-package hello.jpa;
+package jpabook.test;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;

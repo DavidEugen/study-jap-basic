@@ -1,4 +1,4 @@
-package hello.jpa;
+package jpabook.test;
 
 import java.util.List;
 import javax.persistence.EntityManager;

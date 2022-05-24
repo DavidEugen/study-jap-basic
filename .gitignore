@@ -19,5 +19,8 @@ build/
 *.ipr
 out/
 
+### maven target 디렉터리 제외
+target/
+
 ### MAC ###
 .DS_Store
