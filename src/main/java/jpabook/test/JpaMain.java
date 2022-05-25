@@ -37,7 +37,7 @@ public class JpaMain {
 
         try {
             //code
-            insert(em);
+//            insert(em);
 //            find(em);
 //            update(em);
 //            directlyUseQuery(em);
@@ -45,6 +45,7 @@ public class JpaMain {
 //            firstCache(em);
 //            transactionalWriteBehind(em);//쓰기 지연
 //            dirtyChecking(em);//변경 감지
+            insertTeam(em);
 
             tx.commit();
         } catch (Exception e) {
@@ -54,6 +55,30 @@ public class JpaMain {
         }
 
         emf.close();
+
+    }
+
+    private static void insertTeam(EntityManager em) {
+        Team teamA = new Team();
+        teamA.setName("TeamA");
+        em.persist(teamA); // PK 값 획득
+
+        Member member = new Member();
+        member.setName("MemberA");
+        member.setTeam(teamA);
+        em.persist(member);
+
+        //<----만약 DB 에서 쿼리 가져오는 것 보고 싶으면
+//        em.flush(); // 영속성 컨텍스트에 있는것을 DB에 날려서 동기화 시키고
+//        em.clear(); // 초기화 한다.
+        //---->
+
+        // 영속성에서 보는 방뻐
+        Member findMember = em.find(Member.class, member.getId());
+        Team findTeam = findMember.getTeam();
+        System.out.println("findTeam.getName() = " + findTeam.getName());
+
+
 
     }
 
