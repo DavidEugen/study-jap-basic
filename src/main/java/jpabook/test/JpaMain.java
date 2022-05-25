@@ -37,14 +37,14 @@ public class JpaMain {
 
         try {
             //code
-//            insert(em);
+            insert(em);
 //            find(em);
 //            update(em);
 //            directlyUseQuery(em);
 //            lookOverCache(em);
 //            firstCache(em);
 //            transactionalWriteBehind(em);//쓰기 지연
-            dirtyChecking(em);//변경 감지
+//            dirtyChecking(em);//변경 감지
 
             tx.commit();
         } catch (Exception e) {

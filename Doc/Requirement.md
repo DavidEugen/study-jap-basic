@@ -83,7 +83,8 @@ private Long id;
 ### IDENTITY
 데이터베이스에 위임, MYSQL
 
-보통 트랜잭션 커밋 시점에 INSERT SQL 실행하나 IDENTITY 전략은 EntityManager.persist() 시점에 즉시 INSERT SQL 실행 하고 DB에서 식별자를 조회
+보통 트랜잭션 커밋 시점에 INSERT SQL 실행하나 IDENTITY 전략은 EntityManager.persist() 시점에 즉시 INSERT SQL 실행 하고 DB에서 식별자를 조회.
+따라서 모아서 날리는 것은 안됨.
 
 ### SEQUENCE
 데이터베이스 시퀀스 오브젝트 사용, ORACLE
@@ -170,7 +171,7 @@ db catalog, schema 이름
 
 
 ### AUTO
-방언에 따라 자동 지정, 기본값
+기본 값. 방언에 따라 자동 지정
 
 
 
