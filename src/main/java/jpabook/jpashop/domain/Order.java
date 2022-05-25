@@ -29,6 +29,11 @@ public class Order {
     @OneToMany(mappedBy = "order")
     private List<OrderItem> orderItems = new ArrayList<>();
 
+    public void addOrderItem(OrderItem orderItem) {
+        orderItems.add(orderItem);
+        orderItem.setOrder(this);//이렇게 한꺼번에 처리한다.
+    }
+
     private LocalDateTime orderDate;
 
     @Enumerated(EnumType.STRING)
