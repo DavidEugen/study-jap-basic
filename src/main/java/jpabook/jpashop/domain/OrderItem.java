@@ -16,14 +16,10 @@ public class OrderItem {
     @Column(name = "ORDER_ITEM_ID")
     private Long id;
 
-//    @Column(name = "ORDER_ID")
-//    private Long orderId;
     @ManyToOne
     @JoinColumn(name = "ORDER_ID")
-    private Order oder;
+    private Order order;
 
-//    @Column(name = "ITEM_ID")
-//    private Long itemId;
     @OneToMany
     @JoinColumn(name = "ITEM_ID")
     private Item item;
@@ -39,12 +35,12 @@ public class OrderItem {
         this.id = id;
     }
 
-    public Order getOder() {
-        return oder;
+    public Order getOrder() {
+        return order;
     }
 
-    public void setOder(Order oder) {
-        this.oder = oder;
+    public void setOrder(Order oder) {
+        this.order = oder;
     }
 
     public Item getItem() {
