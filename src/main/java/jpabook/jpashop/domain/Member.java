@@ -9,7 +9,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
 @Entity
-public class Member {
+public class Member extends BaseEntity {
 
     //    @Id @GeneratedValue( strategy = GenerationType.AUTO) //default 값 같다.
     @Id
@@ -17,7 +17,7 @@ public class Member {
     @Column(name = "MEMBER_ID")
     private Long id;
 
-//    @OneToMany(mappedBy = "ORDER_ID") // 이렇게 생각했지만
+    //    @OneToMany(mappedBy = "ORDER_ID") // 이렇게 생각했지만
     @OneToMany(mappedBy = "member")
     private List<Order> Orders = new ArrayList<>();
 
