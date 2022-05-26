@@ -92,7 +92,7 @@ private Long id;
 따라서 모아서 날리는 것은 안됨.
 
 ### SEQUENCE
-데이터베이스 시퀀스 오브젝트 사용, ORACLE
+데이터베이스 시퀀스 오브젝트 사용, ORACLE  
 
 ex)오라클 시퀀스
 
