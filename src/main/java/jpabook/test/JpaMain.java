@@ -45,7 +45,7 @@ public class JpaMain {
 //            firstCache(em);
 //            transactionalWriteBehind(em);//쓰기 지연
 //            dirtyChecking(em);//변경 감지
-            insertTeam(em);
+//            insertTeam(em);
 
             tx.commit();
         } catch (Exception e) {

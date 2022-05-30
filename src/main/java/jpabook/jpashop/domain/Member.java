@@ -27,6 +27,13 @@ public class Member extends BaseEntity {
     @Embedded
     private Address address;
 
+//    public Member() {
+//    }
+
+    public Member(String name, Address address) {
+        this.name = name;
+        this.address = address;
+    }
 
     public Long getId() {
         return id;
